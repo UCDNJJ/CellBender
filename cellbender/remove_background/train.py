@@ -233,7 +233,9 @@ def run_inference(dataset_obj: SingleCellRNACountsDataset,
 
     for attempt in range(args.num_training_tries):
         # set seed for every attempt for reproducibility
-        pyro.set_rng_seed(0)
+        torch.manual_seed(args.seed)
+        if args.use_cuda is True: torch.cuda.manual_seed_all(args.seed)
+        pyro.set_rng_seed(args.seed)
         pyro.clear_param_store()
 
         # Set up the variational autoencoder:

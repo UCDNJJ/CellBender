@@ -98,6 +98,10 @@ class CLI(AbstractCLI):
         assert args.final_elbo_fail_fraction is None or args.final_elbo_fail_fraction > 0., \
             "--epoch-elbo-fail-fraction must be > 0"
 
+        assert args.seed > -1
+        sys.stdout.write("Seed: " + str(args.seed) + "\n")
+        sys.stdout.flush()  # Write immediately
+
         self.args = args
 
         return args

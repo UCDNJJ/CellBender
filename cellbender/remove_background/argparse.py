@@ -162,5 +162,9 @@ def add_subparser_args(subparsers: argparse) -> argparse:
                            dest="cells_posterior_reg_calc",
                            help="Number of cells used to estimate posterior regularization lambda. "
                                 "(default: %(default)s)")
+    subparser.add_argument("--seed", type=int, default=0,
+                           dest="seed",
+                           help="Random seed for torch and pyro. "
+                                "(default: %(default)s)")
 
     return subparsers
